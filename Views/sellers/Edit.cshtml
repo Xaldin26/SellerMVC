@@ -1,0 +1,74 @@
+﻿@model SellerDto
+@{
+}
+
+<div class="row">
+    <div class="col-md-8 mx-auto rounded border p-3">
+        <h2 class="text-center mb-5">Edit Seller</h2>
+
+        <form method="post">
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">SellerBP</label>
+                <div class="col-sm-8">
+                    <input class="form-control" value="@ViewData["sellerbp"]">
+                    
+
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">SellerType</label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="seller_type_roles">
+                    <span asp-validation-for="seller_type_roles" class="text-danger"></span>
+
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">SellerLevel</label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="seller_level">
+                    <span asp-validation-for="seller_level" class="text-danger"></span>
+
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">SellerBp</label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="sellerbp">
+                    <span asp-validation-for="sellerbp" class="text-danger"></span>
+
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">Full Name</label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="fullname">
+                    <span asp-validation-for="fullname" class="text-danger"></span>
+
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">Reporting To</label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="reporting_to">
+                    <span asp-validation-for="reporting_to" class="text-danger"></span>
+
+
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="offset-sm-4 col-sm-4 d-grid">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+
+                </div>
+                <div class="col-sm-4 d-grid">
+                    <a class="btn btn-outline-primary" asp-controller="sellers" asp-action="Index" role="button">Cancel</a>
+                </div>
+
+            </div>
+        </form>
+
+    </div>
+
+</div>

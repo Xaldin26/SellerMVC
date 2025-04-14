@@ -1,0 +1,55 @@
+﻿@model List<sellers>
+@{
+}
+
+<div class="col-md-5">
+
+    <form class="d-flex" asp-controller="sellers" asp-action="Index" method="get">
+        <input type="text" name="searchString" placeholder="Search sellers..." class="form-control" />
+        <button type="submit" class="btn btn-outline-success mt-2">Search</button>
+    </form>
+
+</div>
+<h2 class="text-center mb-5">List Of Sellers</h2>
+
+<div class="row mb-5">
+    <div class="col">
+        <a class="btn btn-primary" asp-controller="sellers" asp-action="Create">New Sellers</a>
+    </div>
+    <div class="col">
+    </div>
+
+</div>
+
+<table class="table">
+    <thead class="table-dark">
+        <tr>
+                   
+            <th>Seller Type</th>
+            <th>Seller Level</th>
+            <th>Seller Bp</th>
+            <th>Full Name</th>
+            <th>Reporting To</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    @foreach (var sellers in Model)
+    {
+        <tr>
+            
+            <td>@sellers.seller_type_roles</td>
+            <td>@sellers.seller_level</td>
+            <td>@sellers.sellerbp</td>
+            <td>@sellers.fullname</td>
+            <td>@sellers.reporting_to</td>
+
+            <td style="white-space:nowrap">
+                <a class="btn btn-primary btn-sm" asp-controller="sellers" asp-action="Edit" asp-route-sellerbp="@sellers.sellerbp">Edit</a>
+                <a class="btn btn-primary btn-sm btn-danger" asp-controller="sellers" asp-action="Delete" asp-route-sellerbp="@sellers.sellerbp">Delete</a>
+            </td>
+
+        </tr>
+    }
+
+</table>
