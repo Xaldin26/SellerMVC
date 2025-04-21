@@ -17,7 +17,7 @@ namespace sellerMVC.Services
         protected override void OnModelCreating(ModelBuilder modelBuilder)
 
         {
-            modelBuilder.Entity<sellers>().HasKey(s => s.sellerbp);
+            modelBuilder.Entity<sellers>().HasKey(s => s.Id);
             base.OnModelCreating(modelBuilder);
         }
     }

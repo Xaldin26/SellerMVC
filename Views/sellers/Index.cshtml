@@ -14,7 +14,7 @@
 
 <div class="row mb-5">
     <div class="col">
-        <a class="btn btn-primary" asp-controller="sellers" asp-action="Create">New Sellers</a>
+        <!-- <a class="btn btn-primary" asp-controller="sellers" asp-action="Create">New Sellers</a>-->
     </div>
     <div class="col">
     </div>
@@ -40,13 +40,13 @@
             
             <td>@sellers.seller_type_roles</td>
             <td>@sellers.seller_level</td>
-            <td>@sellers.sellerbp</td>
+            <td>@sellers.seller_buyer_reference</td>
             <td>@sellers.fullname</td>
             <td>@sellers.reporting_to</td>
 
             <td style="white-space:nowrap">
-                <a class="btn btn-primary btn-sm" asp-controller="sellers" asp-action="Edit" asp-route-sellerbp="@sellers.sellerbp">Edit</a>
-                <a class="btn btn-primary btn-sm btn-danger" asp-controller="sellers" asp-action="Delete" asp-route-sellerbp="@sellers.sellerbp">Delete</a>
+               <!--<a class="btn btn-primary btn-sm" asp-controller="sellers" asp-action="Edit" asp-route-sellerbp="@sellers.Id">Edit</a>
+                 <a class="btn btn-primary btn-sm btn-danger" asp-controller="sellers" asp-action="Delete" asp-route-sellerbp="@sellers.Id">Delete</a>-->
             </td>
 
         </tr>

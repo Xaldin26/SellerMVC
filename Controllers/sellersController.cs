@@ -25,11 +25,11 @@ namespace SellerMVC.Controllers
             {
                 sellers = sellers.Where(s =>
                     s.fullname.Contains(searchString) ||
-                    s.sellerbp.Contains(searchString) ||
+                    s.seller_buyer_reference.Contains(searchString) ||
                     s.seller_type_roles.Contains(searchString));
             }
 
-            var orderedSellers = sellers.OrderByDescending(s => s.sellerbp).ToList();
+            var orderedSellers = sellers.OrderByDescending(s => s.Id).ToList();
             return View(orderedSellers);
         }
 
@@ -50,7 +50,7 @@ namespace SellerMVC.Controllers
             {
                 seller_type_roles = sellerDto.seller_type_roles,
                 seller_level = sellerDto.seller_level,
-                sellerbp = sellerDto.sellerbp,
+                seller_buyer_reference = sellerDto.seller_buyer_reference,
                 fullname = sellerDto.fullname,
                 reporting_to = sellerDto.reporting_to,
             };
@@ -61,9 +61,9 @@ namespace SellerMVC.Controllers
             return RedirectToAction("Index", "sellers");
         }
 
-        public IActionResult Edit(string sellerbp)
+        public IActionResult Edit(int Id)
         {
-            var sellers = context.sellers.Find(sellerbp);
+            var sellers = context.sellers.Find(Id);
 
             if (sellers == null)
             {
@@ -74,20 +74,20 @@ namespace SellerMVC.Controllers
             {
                 seller_type_roles = sellers.seller_type_roles,
                 seller_level = sellers.seller_level,
-                sellerbp = sellers.sellerbp,
+                seller_buyer_reference = sellers.seller_buyer_reference,
                 fullname = sellers.fullname,
                 reporting_to = sellers.reporting_to,
             };
 
-            ViewData["sellerbp"] = sellers.sellerbp;
+            ViewData["Id"] = sellers.Id;
 
             return View(sellerDto);
         }
 
         [HttpPost]
-        public IActionResult Edit(string sellerbp, SellerDto sellerDto)
+        public IActionResult Edit(int Id, SellerDto sellerDto)
         {
-            var sellers = context.sellers.Find(sellerbp);
+            var sellers = context.sellers.Find(Id);
 
             if (sellers == null)
             {
@@ -96,11 +96,11 @@ namespace SellerMVC.Controllers
 
             if (!ModelState.IsValid)
             {
-                ViewData["sellerbp"] = sellers.sellerbp;
+                ViewData["Id"] = sellers.Id;
                 return View(sellerDto);
             }
 
-            sellers.sellerbp = sellerDto.sellerbp;
+            sellers.seller_buyer_reference = sellerDto.seller_buyer_reference;
             sellers.seller_type_roles = sellerDto.seller_type_roles;
             sellers.seller_level = sellerDto.seller_level;
             sellers.fullname = sellerDto.fullname;
@@ -111,9 +111,9 @@ namespace SellerMVC.Controllers
             return RedirectToAction("Index", "sellers");
         }
 
-        public IActionResult Delete(string sellerbp)
+        public IActionResult Delete(int Id)
         {
-            var sellers = context.sellers.Find(sellerbp);
+            var sellers = context.sellers.Find(Id);
             if (sellers == null)
             {
                 return RedirectToAction("Index", "sellers");
